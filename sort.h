@@ -1,6 +1,4 @@
 #pragma once
-//#include <iostream>
-//#include <vector>
 #include <bits/stdc++.h>
 using namespace std;
 void printarr(vector<int> arr,char ch);
@@ -18,7 +16,3 @@ int position(vector<int>& arr, int start, int end);
 void CountSort(vector<int>& arr);
 void RadixSort(vector<int>& arr);
 void BucketSort(vector<int>& arr);
-
-
-void insert_serch(vector<int>& arr, int num, int begin, int end);
-void hash_search(vector<int>& arr, int num);
