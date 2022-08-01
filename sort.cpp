@@ -18,7 +18,7 @@ void printarr(vector<int> arr,char ch) {
 	}
 }
 
-//Ã°ÅİÅÅĞò
+//å†’æ³¡æ’åº
 void BubbleSort(vector<int>& arr) {
 	for(int i = 0; i < arr.size() - 1; i++) {
 		for (int j = 0; j < arr.size() - 1 - i; j++) {
@@ -30,7 +30,7 @@ void BubbleSort(vector<int>& arr) {
 		}
 	}
 }
-//²åÈëÅÅĞò
+//æ’å…¥æ’åº
 void InsertSort(vector<int>& arr) {
 	for(int i = 1; i < arr.size(); i++) {
 		int index = i;
@@ -44,7 +44,7 @@ void InsertSort(vector<int>& arr) {
 		}
 	}
 }
-//Ñ¡ÔñÅÅĞò
+//é€‰æ‹©æ’åº
 void SelectSort(vector<int>& arr) {
 	for(int i = 1; i < arr.size(); i++) {
 		int min_index = i-1;
@@ -60,7 +60,7 @@ void SelectSort(vector<int>& arr) {
 		}
 	}
 }
-//Ï£¶ûÅÅĞò
+//å¸Œå°”æ’åº
 void ShellSort(vector<int>& arr) {
 	int interval = 1;
 	while (interval < arr.size() / 3) {
@@ -102,7 +102,7 @@ void merge(vector<int>& arr, int start, int mid, int end) {
 		}
 	}
 }
-//¹é²¢ÅÅĞò
+//å½’å¹¶æ’åº
 void MergeSort(vector<int>& arr, int start, int end) {
 	if (arr.empty() || start > end || start == end) return;
 	int mid;
@@ -130,7 +130,7 @@ int position(vector<int>& arr, int start, int end) {
 	arr[left] = target;
 	return left;	
 }
-//¿ìËÙÅÅĞò
+//å¿«é€Ÿæ’åº
 void QuickSort(vector<int>& arr, int start, int end) {
 	if (start >= end) return;
 	int par;
@@ -138,7 +138,7 @@ void QuickSort(vector<int>& arr, int start, int end) {
 	QuickSort(arr, start, par-1);
 	QuickSort(arr, par+1, end);
 }
-//¼ÆÊıÅÅĞò
+//è®¡æ•°æ’åº
 void CountSort(vector<int>& arr) {
 	int Max = arr[0];
 	for (int i = 1; i < arr.size();i++) {
@@ -162,10 +162,10 @@ void CountSort(vector<int>& arr) {
 		arr[i] = tem[i];
 	}
 }
-//»ùÊıÅÅĞò
+//åŸºæ•°æ’åº
 void RadixSort(vector<int>& arr) {
 	int Max = arr[0];
-	int d = 1;//¼ÇÂ¼×î´óÖµµÄÎ»Êı
+	int d = 1;//è®°å½•æœ€å¤§å€¼çš„ä½æ•°
 	for (int i = 1; i < arr.size(); i++) {
 		Max = Max > arr[i] ? Max : arr[i];
 	}
@@ -176,7 +176,7 @@ void RadixSort(vector<int>& arr) {
 
 	int radix = 1;
 	for (int i = 1; i <= d; i++) {
-		vector<int> array(10, 0);//¼ÆÊıÅÅĞòÊı×é
+		vector<int> array(10, 0);//è®¡æ•°æ’åºæ•°ç»„
 		vector<int> tem(arr.size(), 0);
 		int index;
 		for (int j = 0; j < arr.size(); j++) {
@@ -184,7 +184,7 @@ void RadixSort(vector<int>& arr) {
 			array[index]++;
 		}
 		for (int j = 1; j < 10; j++) array[j] = array[j - 1] + array[j];
-		//µ¹Ğò´æ·Å(FIFO)£¬±£³ÖÎ»ÊıÉÏÊıÖµÏàÍ¬µÄÔªËØÔÚÔ­Ê¼Êı×éÖĞµÄÏà¶ÔÎ»ÖÃ
+		//å€’åºå­˜æ”¾(FIFO)ï¼Œä¿æŒä½æ•°ä¸Šæ•°å€¼ç›¸åŒçš„å…ƒç´ åœ¨åŸå§‹æ•°ç»„ä¸­çš„ç›¸å¯¹ä½ç½®
 		for (int j = tem.size()-1; j >= 0; j--) {
 			index = (arr[j] / radix) % 10;
 			tem[array[index]-1] = arr[j];
@@ -196,7 +196,7 @@ void RadixSort(vector<int>& arr) {
 		radix *= 10;
 	}
 }
-//Í°ÅÅĞò
+//æ¡¶æ’åº
 void BucketSort(vector<int>& arr) {
 	int len = arr.size();
 	int Max = INT_MIN;
@@ -215,56 +215,4 @@ void BucketSort(vector<int>& arr) {
 			bucket[i].pop_back();
 		}
 	}
-}
-
-//²åÖµ²éÕÒ
-void insert_serch(vector<int>& arr, int num, int begin, int end) {
-	sort(arr.begin(), arr.end());
-	if (begin > end) {
-		cout << "no number in array!" << endl;
-		return;
-	}
-	if (begin == end) {
-		if (num == arr[begin]) cout << "the index of number is: " << begin << endl;
-		else cout << "no number in array!" << endl;
-		return;
-	}
-
-	int mid = begin + (end - begin) / (arr[end] - arr[begin]) * (num - arr[begin]);
-	if (num == arr[mid]) {
-		cout<< "the index of number is: " << mid << endl;
-		return;
-	}
-	else if (num <= arr[mid]) {
-		insert_serch(arr, num, begin, mid - 1);
-	}
-	else {
-		insert_serch(arr, num, mid + 1, end);
-	}
-}
-//¹şÏ£²éÕÒ
-void hash_search(vector<int>& arr, int num) {
-	int Max = INT_MIN;
-	for (auto a : arr) {
-		Max = Max > a ? Max : a;
-	}
-	vector<int>hashlist(Max * 2);
-	int index;
-	for (auto a : arr) {
-		index = a % 10;
-		while (hashlist[index] != 0) {
-			index++;
-		}
-		hashlist[index] = a;
-	}
-	int target = num % 10;
-	while (hashlist[target] != num) {
-		target++;
-		if (hashlist[target] == 0 || target == num % 10) {
-			cout << "no number here!" << endl;
-			return;
-		}
-	}
-	cout << "find it! the index in hashlist is: ";
-	cout << target << endl;
 }
